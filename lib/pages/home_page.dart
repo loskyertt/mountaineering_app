@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF83ADD8),
+      backgroundColor: Color(0xFFCCD0CF),
       appBar: AppBar(
         title: Text("首页"),
         actions: [
@@ -43,16 +45,12 @@ class HomePage extends StatelessWidget {
   Widget _buildQuickButton(IconData icon, String label) {
     return Card(
       margin: EdgeInsets.all(8),
-      color: Color(0xFF98B1BF),
+      color: Color.fromARGB(255, 72, 105, 107),
       child: InkWell(
         onTap: () {}, // 添加功能事件
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 40),
-            SizedBox(height: 8),
-            Text(label),
-          ],
+          children: [Icon(icon, size: 40), SizedBox(height: 8), Text(label)],
         ),
       ),
     );

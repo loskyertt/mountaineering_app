@@ -9,6 +9,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,6 +22,8 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,21 +31,25 @@ class SplashScreen extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blueAccent, Colors.greenAccent],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+          // gradient: LinearGradient(
+          //   colors: [Colors.blueAccent, Colors.greenAccent],
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          // ),
+          image: DecorationImage(
+            image: AssetImage('assets/images/nord_mountains.png'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Mountaineering App',
+              '登山步道应用',
               style: TextStyle(
                 fontSize: 36,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Color(0xFFBDC9E2),
               ),
             ),
             SizedBox(height: 20),
@@ -58,13 +66,22 @@ class SplashScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   PageRouteBuilder(
-                    pageBuilder: (context, animation, secondaryAnimation) => MainPage(),
-                    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                    pageBuilder:
+                        (context, animation, secondaryAnimation) => MainPage(),
+                    transitionsBuilder: (
+                      context,
+                      animation,
+                      secondaryAnimation,
+                      child,
+                    ) {
                       const begin = Offset(0.0, 1.0);
                       const end = Offset.zero;
                       const curve = Curves.easeInOut;
 
-                      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+                      var tween = Tween(
+                        begin: begin,
+                        end: end,
+                      ).chain(CurveTween(curve: curve));
                       var offsetAnimation = animation.drive(tween);
 
                       return SlideTransition(
@@ -77,10 +94,7 @@ class SplashScreen extends StatelessWidget {
               },
               child: Text(
                 '进入',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
           ],
@@ -91,6 +105,8 @@ class SplashScreen extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -107,13 +123,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          // width: 430,
-          // height: 932,
-          child: _pages[_currentIndex],
-        ),
-      ),
+      body: Center(child: Container(child: _pages[_currentIndex])),
       bottomNavigationBar: SizedBox(
         width: 430,
         child: BottomNavigationBar(
@@ -125,10 +135,16 @@ class _MainPageState extends State<MainPage> {
           },
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-            BottomNavigationBarItem(icon: Icon(Icons.health_and_safety), label: "健康监测"),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.health_and_safety),
+              label: "健康监测",
+            ),
             BottomNavigationBarItem(icon: Icon(Icons.map), label: "风险地图"),
             BottomNavigationBarItem(icon: Icon(Icons.settings), label: "设置"),
           ],
+          type: BottomNavigationBarType.fixed, // 设置为fixed类型
+          selectedItemColor: const Color(0XFF4E8686), // 选中项的颜色
+          unselectedItemColor: const Color(0Xffbfd3d4), // 未选中项的颜色，这里使用了蓝色较浅的色调
         ),
       ),
     );

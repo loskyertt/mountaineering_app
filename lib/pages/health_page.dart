@@ -1,35 +1,9 @@
-// import 'package:flutter/material.dart';
-
-// class HealthPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Color(0xFF98B1BF),
-//       appBar: AppBar(title: Text("健康监测")),
-//       body: Column(
-//         children: [
-//           Card(
-//             margin: EdgeInsets.all(16),
-//             child: ListTile(
-//               title: Text("实时健康数据"),
-//               subtitle: Text("心率: 78次/分, 血氧: 96%"),
-//             ),
-//           ),
-//           Expanded(
-//             child: Center(
-//               child: Text("历史数据折线图（待实现）"),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class HealthPage extends StatelessWidget {
+  const HealthPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,7 +103,7 @@ class HealthPage extends StatelessWidget {
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
-        width: 100,
+        width: 110,
         height: 120,
         padding: EdgeInsets.all(16),
         child: Column(
